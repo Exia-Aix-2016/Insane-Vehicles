@@ -2,6 +2,10 @@ public class MyVehicle extends Element{
     private int x;
     private int y;
 
+    public MyVehicle(char sprite){
+           super(sprite);
+        }
+
 
     public void setX(int x) {
         this.x = x;
@@ -15,7 +19,4 @@ public class MyVehicle extends Element{
     }
     public int getY() { return y; }
 
-    public MyVehicle(){
-        
-    }
 }
