@@ -1,5 +1,11 @@
 package fr.exia.insanevehicles.first;
 
+import fr.exia.insanevehicles.first.element.Element;
+import fr.exia.insanevehicles.first.element.MyVehicle;
+import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
+import java.io.IOException;
+
+
 /**
  * <h1>The Class InsaneVehiclesGames.</h1>
  *
@@ -21,20 +27,55 @@ public class InsaneVehiclesGames {
     public static final int ROAD_QUOTA  = 20;
 
     /** The road. */
-    private Road            road;
-
+    private Road road;
+    private MyVehicle car;
+    Element Macadam;
     /**
      * Instantiates a new insane vehicles games.
      */
     public InsaneVehiclesGames() {
         this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW, ROAD_QUOTA));
+        car = new MyVehicle(road.getWidth()/2 , 1);
+
+        Macadam = MotionlessElementsFactory.createMacadam();
+
     }
 
     /**
      * Play.
      */
     public final void play() {
-        this.getRoad().show(0);
+
+
+
+
+
+
+        while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()) {
+            System.out.println("=================================");
+            int prevX = car.getX();
+            int prevY = car.getY();
+
+            road.setOnTheRoadXY(car, prevX, prevY);
+            this.car.moveForward();
+
+
+            try
+            {
+                Runtime.getRuntime().exec("cmd /c cls");
+            }
+            catch(final Exception e)
+            {
+                System.out.print(e);
+            }
+            this.getRoad().show(0);
+
+            road.removeOnTHeRoadXY(prevX, prevY);
+
+        }
+
+
+
     }
 
     /**

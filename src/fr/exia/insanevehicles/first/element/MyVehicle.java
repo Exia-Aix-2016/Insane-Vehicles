@@ -5,8 +5,28 @@ public class MyVehicle extends Element {
     private int x, y;
     private static final char SPRITE = 'H';
 
-    MyVehicle(){
+    public MyVehicle(int X, int Y){
         super(SPRITE);
+        x = X;
+        y = Y;
     }
+
+    public void moveForward(){
+        y += 1;
+    }
+    public void moveLeft(){
+        y -= 1;
+    }
+    public void moveRight(){
+        y += 1;
+    }
+
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+
     
 }

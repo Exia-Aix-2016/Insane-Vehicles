@@ -75,11 +75,17 @@ public class Road {
         for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
                 if ((x == 0) || (x == (this.getWidth() - 1))) {
+
                     this.setOnTheRoadXY(MotionlessElementsFactory.createDitch(), x, y);
+
                 } else if ((random.nextInt() % this.getQuota()) == 0) {
+
                     this.setOnTheRoadXY(MotionlessElementsFactory.createObstacle(), x, y);
+
                 } else {
+
                     this.setOnTheRoadXY(MotionlessElementsFactory.createMacadam(), x, y);
+
                 }
             }
         }
@@ -187,5 +193,9 @@ public class Road {
     public final void setOnTheRoadXY(final Element element, final int x, final int y) {
         this.onTheRoad[x][y] = element;
     }
+    public  final void removeOnTHeRoadXY(final int x, final int y){
+        this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam();
+    }
+
 
 }

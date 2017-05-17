@@ -1,5 +1,7 @@
 package fr.exia.insanevehicles.first;
 
+import java.io.IOException;
+
 /**
  * <h1>The Class InsaneVehicles.</h1>
  *
@@ -15,6 +17,8 @@ public abstract class InsaneVehicles {
      *            the arguments
      */
     public static void main(final String[] args) {
+
+
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
         insaneVehiclesGame.play();
     }
