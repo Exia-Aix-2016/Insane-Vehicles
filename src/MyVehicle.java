@@ -18,6 +18,4 @@ public class MyVehicle extends Element{
     public MyVehicle(){
         
     }
-
-
 }
