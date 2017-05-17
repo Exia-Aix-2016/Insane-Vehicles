@@ -1,3 +1,3 @@
-public class Obstacle {
+public class Obstacle extends Element{
     Obstacle(){}
 }

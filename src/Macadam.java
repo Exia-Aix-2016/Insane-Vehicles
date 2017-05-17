@@ -1,3 +1,3 @@
-public class Macadam {
+public class Macadam extends Element {
     Macadam(){}
 }

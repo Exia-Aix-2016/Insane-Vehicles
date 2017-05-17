@@ -1,3 +1,3 @@
-public class MyVehicle {
+public class MyVehicle extends Element {
 
 }
