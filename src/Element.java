@@ -20,6 +20,12 @@ public class Element {
     public char getSprite() {//Return sprite Element
         return sprite;
     }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
 
 
 }
