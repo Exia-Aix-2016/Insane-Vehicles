@@ -1,7 +1,5 @@
-package PACKAGE_NAME;
-
-/**
- * Created by Mandel on 17/05/2017.
- */
+/*
+* Cette classe permet de gérer la map
+*/
 public class Map {
 }
