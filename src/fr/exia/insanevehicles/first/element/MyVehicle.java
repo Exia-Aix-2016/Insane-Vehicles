@@ -15,10 +15,10 @@ public class MyVehicle extends Element {
         y += 1;
     }
     public void moveLeft(){
-        y -= 1;
+        x -= 1;
     }
     public void moveRight(){
-        y += 1;
+        x += 1;
     }
 
     public int getX(){

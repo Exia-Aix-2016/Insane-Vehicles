@@ -3,7 +3,12 @@ package fr.exia.insanevehicles.first;
 import fr.exia.insanevehicles.first.element.Element;
 import fr.exia.insanevehicles.first.element.MyVehicle;
 import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -38,7 +43,6 @@ public class InsaneVehiclesGames {
         car = new MyVehicle(road.getWidth()/2 , 1);
 
         Macadam = MotionlessElementsFactory.createMacadam();
-
     }
 
     /**
@@ -46,24 +50,24 @@ public class InsaneVehiclesGames {
      */
     public final void play() {
 
+        Scanner sc = new Scanner(System.in);
+
         while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()) {
             System.out.println("=================================");
             int prevX = car.getX();
             int prevY = car.getY();
 
             road.setOnTheRoadXY(car, prevX, prevY);
-            this.car.moveForward();
 
-
-            try
-            {
-                Runtime.getRuntime().exec("cmd /c cls");
-            }
-            catch(final Exception e)
-            {
-                System.out.print(e);
-            }
             this.getRoad().show(0);
+
+            String str = sc.nextLine();
+            if ("q".equals(str)){
+                this.car.moveLeft();
+            } else if ("d".equals(str)){
+                this.car.moveRight();
+            }
+            this.car.moveForward();
 
             road.removeOnTHeRoadXY(prevX, prevY);
 
