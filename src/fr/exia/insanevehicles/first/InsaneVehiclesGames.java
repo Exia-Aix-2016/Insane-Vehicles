@@ -46,11 +46,6 @@ public class InsaneVehiclesGames {
      */
     public final void play() {
 
-
-
-
-
-
         while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()) {
             System.out.println("=================================");
             int prevX = car.getX();
@@ -74,8 +69,7 @@ public class InsaneVehiclesGames {
 
         }
 
-
-
+        System.out.println("Crash !!!");
     }
 
     /**
