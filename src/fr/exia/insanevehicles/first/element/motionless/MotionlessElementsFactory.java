@@ -19,8 +19,10 @@ public abstract class MotionlessElementsFactory {
     /** The Constant OBSTACLE. */
     private static final Obstacle OBSTACLE = new Obstacle();
 
+
     private static final Bush BUSH = new Bush();
 
+    private  static final Finishing_line finishLine = new Finishing_line();
     /**
      * Creates a new ditch object.
      *
@@ -63,5 +65,9 @@ public abstract class MotionlessElementsFactory {
 
     public static MotionlessElement createBush() {
         return BUSH;
+    }
+
+    public static  MotionlessElement createFinishLine(){
+        return finishLine;
     }
 }

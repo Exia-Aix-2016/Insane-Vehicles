@@ -31,15 +31,18 @@ public class InsaneVehiclesGames {
     private Road road;
     private MyVehicle car;
     Element Macadam;
+    Element FinishLine;
     /**
      * Instantiates a new insane vehicles games.
      */
     public InsaneVehiclesGames() {
         //this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW, ROAD_QUOTA));
         this.setRoad(new RoadLoader(ROAD_VIEW, ROAD_QUOTA, "road.txt").get());
+
         car = new MyVehicle(road.getWidth()/2 , 1);
 
         Macadam = MotionlessElementsFactory.createMacadam();
+        FinishLine = MotionlessElementsFactory.createFinishLine();
     }
 
     /**
@@ -50,14 +53,17 @@ public class InsaneVehiclesGames {
         Scanner sc = new Scanner(System.in);
 
         int startY = 0;
+        int tour = 1;
         boolean check = false;
 
-        while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()) {
+        while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()
+                || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite()) {
+
             if (car.getY() == road.getHeight()-1){
-                check = true;
-                break;
+                    check = true;
+                    break;
             }else {
-                System.out.println("=================================");
+                System.out.println("==========" + "TOURS " + tour + "==========");
                 int prevX = car.getX();
                 int prevY = car.getY();
 
@@ -68,6 +74,10 @@ public class InsaneVehiclesGames {
                     startY++;
                 }
                 this.getRoad().show(startY);
+                if(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite())
+                {
+                    tour++;
+                }
 
                 String str = sc.nextLine();
                 if ("q".equals(str)) {

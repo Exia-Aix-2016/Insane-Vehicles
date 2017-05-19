@@ -54,6 +54,10 @@ public class RoadLoader {
                     switch (ch[x]){
                         case ' ':
                             this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam();
+                            if(y == height-1)
+                            {
+                               onTheRoad[x][y] =  MotionlessElementsFactory.createFinishLine();
+                            }
                             break;
                         case '^':
                             this.onTheRoad[x][y] = MotionlessElementsFactory.createBush();
@@ -70,7 +74,10 @@ public class RoadLoader {
                         case 'X':
                             this.onTheRoad[x][y] = MotionlessElementsFactory.createObstacle();
                             break;
+
                     }
+
+
                 }
             }
 
