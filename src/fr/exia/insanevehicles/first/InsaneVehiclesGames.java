@@ -52,28 +52,44 @@ public class InsaneVehiclesGames {
 
         Scanner sc = new Scanner(System.in);
 
+        int startY = 0;
+        boolean check = false;
+
         while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()) {
-            System.out.println("=================================");
-            int prevX = car.getX();
-            int prevY = car.getY();
+            if (car.getY() == road.getHeight()-1){
+                check = true;
+                break;
+            }else {
+                System.out.println("=================================");
+                int prevX = car.getX();
+                int prevY = car.getY();
 
-            road.setOnTheRoadXY(car, prevX, prevY);
+                road.setOnTheRoadXY(car, prevX, prevY);
 
-            this.getRoad().show(0);
 
-            String str = sc.nextLine();
-            if ("q".equals(str)){
-                this.car.moveLeft();
-            } else if ("d".equals(str)){
-                this.car.moveRight();
+                if(!(prevY < road.getView() / 2)) {
+                    startY++;
+                }
+                this.getRoad().show(startY);
+
+                String str = sc.nextLine();
+                if ("q".equals(str)) {
+                    this.car.moveLeft();
+                } else if ("d".equals(str)) {
+                    this.car.moveRight();
+                }
+                this.car.moveForward();
+                
+                road.removeOnTHeRoadXY(prevX, prevY);
             }
-            this.car.moveForward();
 
-            road.removeOnTHeRoadXY(prevX, prevY);
 
         }
-
-        System.out.println("Crash !!!");
+        if(check == false) {
+            System.out.println("Crash !!!");
+        }else {
+            System.out.println("Win !");
+        }
     }
 
     /**
