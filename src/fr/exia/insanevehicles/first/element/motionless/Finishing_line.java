@@ -5,7 +5,7 @@ package fr.exia.insanevehicles.first.element.motionless;
  */
 class Finishing_line extends MotionlessElement {
     /** The Constant SPRITE. */
-    private static final char SPRITE = '░';
+    private static final char SPRITE = '~';
 
     /**
      * Instantiates a new ditch.
