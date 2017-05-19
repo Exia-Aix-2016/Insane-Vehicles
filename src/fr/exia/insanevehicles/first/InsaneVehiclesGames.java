@@ -4,11 +4,7 @@ import fr.exia.insanevehicles.first.element.Element;
 import fr.exia.insanevehicles.first.element.MyVehicle;
 import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -39,7 +35,8 @@ public class InsaneVehiclesGames {
      * Instantiates a new insane vehicles games.
      */
     public InsaneVehiclesGames() {
-        this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW, ROAD_QUOTA));
+        //this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW, ROAD_QUOTA));
+        this.setRoad(new RoadLoader(ROAD_VIEW, ROAD_QUOTA, "road.txt").get());
         car = new MyVehicle(road.getWidth()/2 , 1);
 
         Macadam = MotionlessElementsFactory.createMacadam();

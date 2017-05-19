@@ -49,6 +49,14 @@ public class Road {
         this.fillOnTheRoad();
     }
 
+    public Road(final int width, final int height, final int view, final int quota, Element[][] onTheRoad) {
+        this.setWidth(width);
+        this.setHeight(height);
+        this.setView(view);
+        this.setQuota(quota);
+        this.onTheRoad = onTheRoad;
+    }
+
     /**
      * Show.
      *

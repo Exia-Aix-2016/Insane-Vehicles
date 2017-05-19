@@ -10,12 +10,16 @@ public abstract class MotionlessElementsFactory {
 
     /** The Constant DITCH. */
     private static final Ditch    DITCH    = new Ditch();
+    private static final DitchRight    DITCH_RIGHT    = new DitchRight();
+    private static final DitchLeft    DITCH_LEFT    = new DitchLeft();
 
     /** The Constant MACADAM. */
     private static final Macadam  MACADAM  = new Macadam();
 
     /** The Constant OBSTACLE. */
     private static final Obstacle OBSTACLE = new Obstacle();
+
+    private static final Bush BUSH = new Bush();
 
     /**
      * Creates a new ditch object.
@@ -24,6 +28,18 @@ public abstract class MotionlessElementsFactory {
      */
     public static MotionlessElement createDitch() {
         return DITCH;
+    }
+
+    public static MotionlessElement createDitch(DitchDirection direction) {
+        switch (direction){
+            case LEFT:
+                return DITCH_LEFT;
+            case RIGHT:
+                return DITCH_RIGHT;
+            default:
+                return DITCH;
+        }
+
     }
 
     /**
@@ -42,5 +58,10 @@ public abstract class MotionlessElementsFactory {
      */
     public static MotionlessElement createObstacle() {
         return OBSTACLE;
+    }
+
+
+    public static MotionlessElement createBush() {
+        return BUSH;
     }
 }
