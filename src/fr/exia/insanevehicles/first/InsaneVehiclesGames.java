@@ -36,6 +36,10 @@ public class InsaneVehiclesGames {
     private MyVehicle car;
     Element Macadam;
     Element FinishLine;
+
+
+    private Window window = new Window();
+    private Panel panel = new Panel();
     /**
      * Instantiates a new insane vehicles games.
      */
@@ -43,70 +47,8 @@ public class InsaneVehiclesGames {
         //this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW, ROAD_QUOTA));
         this.setRoad(new RoadLoader(ROAD_VIEW, ROAD_QUOTA, "road.txt").get());
 
-        car = new MyVehicle(road.getWidth()/2 , 1);
-
         Macadam = MotionlessElementsFactory.createMacadam();
         FinishLine = MotionlessElementsFactory.createFinishLine();
-    }
-
-    /**
-     * Play.
-     */
-    public final void play() {
-
-        Scanner sc = new Scanner(System.in);
-
-        int startY = 0;
-        int tour = 1;
-        boolean check = false;
-
-        while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()
-                || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite()) {
-
-            if (car.getY() == road.getHeight()-1){
-                    check = true;
-                    break;
-            }else {
-                System.out.println("==========" + "TOURS " + tour + "==========");
-                int prevX = car.getX();
-                int prevY = car.getY();
-
-                road.setOnTheRoadXY(car, prevX, prevY);
-
-
-                if(!(prevY < road.getView() / 2)) {
-                    startY++;
-                }
-                this.getRoad().show(startY);
-                if(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite())
-                {
-                    tour++;
-                }
-
-                String str = sc.nextLine();
-                if ("q".equals(str)) {
-                    this.car.moveLeft();
-                } else if ("d".equals(str)) {
-                    this.car.moveRight();
-                }
-                this.car.moveForward();
-                
-                road.removeOnTHeRoadXY(prevX, prevY);
-            }
-
-
-        }
-        if(!check) {
-            System.out.println("Crash !!!");
-        }else {
-            System.out.println("Win !");
-        }
-    }
-
-
-    public void playGraphic(){
-        Window window = new Window();
-        Panel panel = new Panel();
 
         window.setContentPane(panel);
         window.addKeyListener(new KeyListener() {
@@ -133,9 +75,17 @@ public class InsaneVehiclesGames {
 
             }
         });
+    }
+
+
+    public void play(){
 
         int startY = 0;
         boolean check = false;
+
+        window.setBackground(Color.white);
+
+        car = new MyVehicle(road.getWidth()/2 , 1);
 
         while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()
                 || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite()){
@@ -156,7 +106,7 @@ public class InsaneVehiclesGames {
                 window.repaint();
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(200);
                 } catch (Exception e){
 
                 }
@@ -174,6 +124,13 @@ public class InsaneVehiclesGames {
             window.setBackground(Color.RED);
         }
 
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (Exception e){
+
+        }
+
+        play();
 
     }
     /**

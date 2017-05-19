@@ -19,7 +19,6 @@ public abstract class InsaneVehicles {
     public static void main(final String[] args) {
 
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
-        //insaneVehiclesGame.play();
-        insaneVehiclesGame.playGraphic();
+        insaneVehiclesGame.play();
     }
 }
