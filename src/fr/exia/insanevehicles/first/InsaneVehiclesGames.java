@@ -4,7 +4,11 @@ import fr.exia.insanevehicles.first.element.Element;
 import fr.exia.insanevehicles.first.element.MyVehicle;
 import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -92,13 +96,86 @@ public class InsaneVehiclesGames {
 
 
         }
-        if(check == false) {
+        if(!check) {
             System.out.println("Crash !!!");
         }else {
             System.out.println("Win !");
         }
     }
 
+
+    public void playGraphic(){
+        Window window = new Window();
+        Panel panel = new Panel();
+
+        window.setContentPane(panel);
+        window.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch( keyCode ) {
+                    case KeyEvent.VK_LEFT:
+                        car.moveLeft();
+                        break;
+                    case KeyEvent.VK_RIGHT :
+                        car.moveRight();
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+
+        int startY = 0;
+        boolean check = false;
+
+        while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()
+                || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite()){
+            if (car.getY() == road.getHeight()-1){
+                check = true;
+                break;
+            }else {
+                int prevX = car.getX();
+                int prevY = car.getY();
+
+                road.setOnTheRoadXY(car, prevX, prevY);
+
+
+                if(!(prevY < road.getView() / 2)) {
+                    startY++;
+                }
+                panel.setText(road.getText(startY));
+                window.repaint();
+
+                try {
+                    TimeUnit.MILLISECONDS.sleep(500);
+                } catch (Exception e){
+
+                }
+
+                this.car.moveForward();
+
+                road.removeOnTHeRoadXY(prevX, prevY);
+            }
+
+        }
+
+        if (check) {
+            window.setBackground(Color.GREEN);
+        }else {
+            window.setBackground(Color.RED);
+        }
+
+
+    }
     /**
      * Gets the road.
      *

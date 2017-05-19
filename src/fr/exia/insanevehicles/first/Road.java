@@ -74,6 +74,21 @@ public class Road {
         }
     }
 
+    public String getText(final int yStart){
+        int y = yStart;
+        String result = "";
+
+        for (int view = 0; view < this.getView(); view++) {
+            y = (y + 1) % this.getHeight();
+            for (int x = 0; x < this.getWidth(); x++) {
+                result += this.getOnTheRoadXY(x, y).getSprite();
+            }
+            result += "\n";
+        }
+
+        return result;
+    }
+
     /**
      * Fill on the road.
      */

@@ -1,6 +1,6 @@
 package fr.exia.insanevehicles.first;
 
-import java.io.IOException;
+import javax.swing.*;
 
 /**
  * <h1>The Class InsaneVehicles.</h1>
@@ -18,8 +18,8 @@ public abstract class InsaneVehicles {
      */
     public static void main(final String[] args) {
 
-
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
-        insaneVehiclesGame.play();
+        //insaneVehiclesGame.play();
+        insaneVehiclesGame.playGraphic();
     }
 }
