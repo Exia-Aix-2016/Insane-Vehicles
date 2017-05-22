@@ -4,9 +4,7 @@ import fr.exia.insanevehicles.first.element.Element;
 import fr.exia.insanevehicles.first.element.motionless.DitchDirection;
 import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class RoadLoader {
 
@@ -22,7 +20,8 @@ public class RoadLoader {
         this.filename = filename;
         this.quotaString = quotaString;
         this.view = view;
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        InputStream in = getClass().getResourceAsStream(filename);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
             this.br = br;
             this.getDimension();
             this.onTheRoad = new Element[this.width][this.height];
