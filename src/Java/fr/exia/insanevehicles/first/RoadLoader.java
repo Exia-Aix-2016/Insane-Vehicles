@@ -52,7 +52,7 @@ public class RoadLoader {
                 for (int x=0; x < this.width; x++){
                     switch (ch[x]){
                         case ' ':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam(x, y);
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam(y, x);
                             if(y == height-1)
                             {
                                onTheRoad[x][y] =  MotionlessElementsFactory.createFinishLine(x, y);

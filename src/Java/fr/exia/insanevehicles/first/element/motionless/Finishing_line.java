@@ -15,7 +15,8 @@ class Finishing_line extends MotionlessElement {
     @Override
     public void paintComponent(Graphics g)
     {
-
+        g.setColor(Color.green);
+        g.drawRect(x, y, 10, 10);
     }
     @Deprecated
     Finishing_line() {

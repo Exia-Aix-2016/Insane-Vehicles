@@ -96,16 +96,20 @@ public class Road {
     public void getGraphic(final int ystart, JFrame fen) {
         int y = ystart;
 
-        JPanel map = new JPanel();
+        //JPanel map = new JPanel();
 
         for (int view = 0; view < this.getView(); view++) {
+
             y = (y + 1) % this.getHeight();
             for (int x = 0; x < this.getWidth(); x++) {
-                map.add(this.getOnTheRoadXY(x, y));
+                fen.add(this.getOnTheRoadXY(x, y));
+
             }
 
+
         }
-        fen.add(map);
+
+
     }
 
     /**

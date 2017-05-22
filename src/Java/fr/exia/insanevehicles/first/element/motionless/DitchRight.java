@@ -19,7 +19,8 @@ class DitchRight extends MotionlessElement {
     @Override
     public void paintComponent(Graphics g)
     {
-
+        g.setColor(Color.YELLOW);
+        g.drawRect(x, y, 10, 10);
     }
     @Deprecated
     DitchRight() {

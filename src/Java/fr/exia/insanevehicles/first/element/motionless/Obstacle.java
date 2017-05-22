@@ -19,7 +19,8 @@ class Obstacle extends MotionlessElement {
     @Override
     public void paintComponent(Graphics g)
     {
-
+        g.setColor(Color.RED);
+        g.drawRect(x, y, 10, 10);
     }
     @Deprecated
     Obstacle() {

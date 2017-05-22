@@ -19,7 +19,8 @@ class Macadam extends MotionlessElement {
     @Override
     public void paintComponent(Graphics g)
     {
-
+        g.setColor(Color.WHITE);
+        g.drawRect(x, y, 10, 10);
     }
     @Deprecated
     Macadam() {

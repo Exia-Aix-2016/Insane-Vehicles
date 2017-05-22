@@ -50,7 +50,7 @@ public class InsaneVehiclesGames {
         Macadam = MotionlessElementsFactory.createMacadam();
         FinishLine = MotionlessElementsFactory.createFinishLine();
 
-        window.setContentPane(panel);
+        //window.setContentPane(panel);
         window.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -88,7 +88,8 @@ public class InsaneVehiclesGames {
         car = new MyVehicle(road.getWidth()/2 , 1);
 
         while(road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == Macadam.getSprite()
-                || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite()){
+                || road.getOnTheRoadXY(car.getX(), car.getY()).getSprite() == FinishLine.getSprite() || true){
+
             if (car.getY() == road.getHeight()-1){
                 check = true;
                 break;
