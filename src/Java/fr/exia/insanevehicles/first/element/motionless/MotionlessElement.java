@@ -16,8 +16,14 @@ abstract class MotionlessElement extends Element {
      * @param sprite
      *            the sprite
      */
+    @Deprecated
     MotionlessElement(final char sprite) {
         super(sprite);
     }
+    MotionlessElement(final int x, final int y){
+        super(x, y);
+    }
+
+
 
 }

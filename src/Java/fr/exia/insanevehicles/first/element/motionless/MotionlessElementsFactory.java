@@ -28,10 +28,13 @@ public abstract class MotionlessElementsFactory {
      *
      * @return the motionless element
      */
+    @Deprecated
     public static MotionlessElement createDitch() {
         return DITCH;
     }
 
+
+    @Deprecated
     public static MotionlessElement createDitch(DitchDirection direction) {
         switch (direction){
             case LEFT:
@@ -49,6 +52,7 @@ public abstract class MotionlessElementsFactory {
      *
      * @return the motionless element
      */
+    @Deprecated
     public static MotionlessElement createMacadam() {
         return MACADAM;
     }
@@ -58,15 +62,20 @@ public abstract class MotionlessElementsFactory {
      *
      * @return the motionless element
      */
+    @Deprecated
     public static MotionlessElement createObstacle() {
         return OBSTACLE;
     }
 
-
+    @Deprecated
     public static MotionlessElement createBush() {
         return BUSH;
     }
-
+    
+    public static MotionlessElement createDitch(final int x, final int y){
+        return new Bush(x, y);
+    }
+    @Deprecated
     public static  MotionlessElement createFinishLine(){
         return finishLine;
     }
