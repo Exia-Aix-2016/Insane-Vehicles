@@ -102,7 +102,8 @@ public class InsaneVehiclesGames {
                 if(!(prevY < road.getView() / 2)) {
                     startY++;
                 }
-                panel.setText(road.getText(startY));
+                road.getGraphic(startY, window);
+                //panel.setText(road.getText(startY));
                 window.repaint();
 
                 try {

@@ -2,8 +2,11 @@ package fr.exia.insanevehicles.first;
 
 import java.util.Random;
 
+import com.sun.istack.internal.Nullable;
 import fr.exia.insanevehicles.first.element.Element;
 import fr.exia.insanevehicles.first.element.motionless.MotionlessElementsFactory;
+
+import javax.swing.*;
 
 /**
  * <h1>The Class Road.</h1>
@@ -63,6 +66,7 @@ public class Road {
      * @param yStart
      *            the y start
      */
+    @Deprecated
     public final void show(final int yStart) {
         int y = yStart;
         for (int view = 0; view < this.getView(); view++) {
@@ -87,6 +91,21 @@ public class Road {
         }
 
         return result;
+    }
+    @Nullable
+    public void getGraphic(final int ystart, JFrame fen) {
+        int y = ystart;
+
+        JPanel map = new JPanel();
+
+        for (int view = 0; view < this.getView(); view++) {
+            y = (y + 1) % this.getHeight();
+            for (int x = 0; x < this.getWidth(); x++) {
+                map.add(this.getOnTheRoadXY(x, y));
+            }
+
+        }
+        fen.add(map);
     }
 
     /**
