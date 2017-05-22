@@ -52,26 +52,26 @@ public class RoadLoader {
                 for (int x=0; x < this.width; x++){
                     switch (ch[x]){
                         case ' ':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam();
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createMacadam(x, y);
                             if(y == height-1)
                             {
-                               onTheRoad[x][y] =  MotionlessElementsFactory.createFinishLine();
+                               onTheRoad[x][y] =  MotionlessElementsFactory.createFinishLine(x, y);
                             }
                             break;
                         case '^':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createBush();
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createBush(x, y);
                             break;
                         case '|':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch();
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch(x, y);
                             break;
                         case '\\':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch(DitchDirection.LEFT);
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch(DitchDirection.LEFT, x, y);
                             break;
                         case '/':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch(DitchDirection.RIGHT);
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createDitch(DitchDirection.RIGHT, x, y);
                             break;
                         case 'X':
-                            this.onTheRoad[x][y] = MotionlessElementsFactory.createObstacle();
+                            this.onTheRoad[x][y] = MotionlessElementsFactory.createObstacle(x, y);
                             break;
 
                     }

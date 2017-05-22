@@ -1,5 +1,7 @@
 package fr.exia.insanevehicles.first.element.motionless;
 
+import java.awt.*;
+
 /**
  * <h1>The Class Ditch.</h1>
  *
@@ -14,7 +16,17 @@ class DitchRight extends MotionlessElement {
     /**
      * Instantiates a new ditch.
      */
+    @Override
+    public void paintComponent(Graphics g)
+    {
+
+    }
+    @Deprecated
     DitchRight() {
         super(SPRITE);
     }
+    DitchRight(final int x, final int y){
+        super(x, y);
+    }
+
 }

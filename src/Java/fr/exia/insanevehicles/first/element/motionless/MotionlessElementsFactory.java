@@ -33,7 +33,9 @@ public abstract class MotionlessElementsFactory {
         return DITCH;
     }
 
-
+    public static MotionlessElement createDitch(final int x, final int y){
+        return new Bush(x, y);
+    }
     @Deprecated
     public static MotionlessElement createDitch(DitchDirection direction) {
         switch (direction){
@@ -44,7 +46,17 @@ public abstract class MotionlessElementsFactory {
             default:
                 return DITCH;
         }
+    }
 
+    public static MotionlessElement createDitch(DitchDirection direction, final int x, final int y){
+        switch (direction){
+            case LEFT:
+                return new DitchLeft(x, y);
+            case RIGHT:
+                return new DitchRight(x, y);
+            default:
+                return new Ditch(x, y);
+        }
     }
 
     /**
@@ -56,6 +68,9 @@ public abstract class MotionlessElementsFactory {
     public static MotionlessElement createMacadam() {
         return MACADAM;
     }
+    public static MotionlessElement createMacadam(final int x, final int y){
+        return new Macadam(x, y);
+    }
 
     /**
      * Creates a new obstacle object.
@@ -66,17 +81,25 @@ public abstract class MotionlessElementsFactory {
     public static MotionlessElement createObstacle() {
         return OBSTACLE;
     }
+    public static MotionlessElement createObstacle(final int x, final int y){
+        return new Obstacle(x, y);
+    }
 
     @Deprecated
     public static MotionlessElement createBush() {
         return BUSH;
     }
-    
-    public static MotionlessElement createDitch(final int x, final int y){
+    public static MotionlessElement createBush(final int x, final int y){
         return new Bush(x, y);
     }
+
+
     @Deprecated
     public static  MotionlessElement createFinishLine(){
         return finishLine;
+    }
+
+    public static MotionlessElement createFinishLine(final int x, final int y){
+       return new Finishing_line(x, y);
     }
 }

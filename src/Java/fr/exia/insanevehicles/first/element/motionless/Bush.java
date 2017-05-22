@@ -25,6 +25,7 @@ class Bush extends MotionlessElement {
     Bush() {
         super(SPRITE);
     }
+
     Bush(final int x, final int y){
         super(x, y);
     }

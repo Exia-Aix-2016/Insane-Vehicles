@@ -1,5 +1,7 @@
 package fr.exia.insanevehicles.first.element.motionless;
 
+import java.awt.*;
+
 /**
  * <h1>The Class Obstacle.</h1>
  *
@@ -14,7 +16,16 @@ class Obstacle extends MotionlessElement {
     /**
      * Instantiates a new obstacle.
      */
+    @Override
+    public void paintComponent(Graphics g)
+    {
+
+    }
+    @Deprecated
     Obstacle() {
         super(SPRITE);
+    }
+    Obstacle(final int x, final int y){
+        super(x, y);
     }
 }
