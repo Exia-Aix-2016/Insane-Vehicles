@@ -14,12 +14,12 @@ class Macadam extends MotionlessElement {
 
     /** The Constant SPRITE. */
     private static final char SPRITE = ' ';
-    private static final String IMAGE = "WhiteTile.jpg";
+    private static final String IMAGE = "macadam.jpg";
 
     /**
      * Instantiates a new macadam.
      */
     Macadam() {
-        super(IMAGE, Permeability.PENETRABLE);
+        super(IMAGE, SPRITE, Permeability.PENETRABLE);
     }
 }

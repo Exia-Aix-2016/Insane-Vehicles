@@ -15,7 +15,7 @@ import java.net.URL;
  */
 public abstract class Element implements ISquare{
 
-    /** The sprite. */
+    /** The sprite. *///
     private char         sprite;
 
     private Image  image;
@@ -32,7 +32,8 @@ public abstract class Element implements ISquare{
      * @param permeability
      *            the permeability
      */
-    public Element(final String imageName, final Permeability permeability) {
+    public Element(final String imageName, final char sprite, final Permeability permeability) {
+        this.setSprite(sprite);
         this.setImageName(imageName);
         this.setPermeability(permeability);
         try {

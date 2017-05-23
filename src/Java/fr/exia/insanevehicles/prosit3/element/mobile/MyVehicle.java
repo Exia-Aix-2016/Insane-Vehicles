@@ -15,7 +15,7 @@ public class MyVehicle extends Mobile {
 
     /** The Constant SPRITE. */
     private static final char SPRITE = 'H';
-    private static final String IMAGE = "Monster4.png";
+    private static final String IMAGE = "car.png";
 
     /**
      * Instantiates a new my vehicle.
@@ -28,6 +28,6 @@ public class MyVehicle extends Mobile {
      *            the road
      */
     public MyVehicle(final int x, final int y, final Road road) throws IOException{
-        super(x, y, IMAGE, road, Permeability.BLOCKING);
+        super(x, y, IMAGE, SPRITE, road, Permeability.BLOCKING);
     }
 }

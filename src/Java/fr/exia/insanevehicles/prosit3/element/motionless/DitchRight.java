@@ -14,12 +14,12 @@ class DitchRight extends MotionlessElement {
 
     /** The Constant SPRITE. */
     private static final char SPRITE = '\\';
-    private static final String IMAGE = "LightGrayTile.jpg";
+    private static final String IMAGE = "dirt.jpg";
 
     /**
      * Instantiates a new ditchRight.
      */
     DitchRight() {
-        super(IMAGE, Permeability.BLOCKING);
+        super(IMAGE, SPRITE, Permeability.BLOCKING);
     }
 }

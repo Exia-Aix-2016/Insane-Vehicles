@@ -20,6 +20,6 @@ class Obstacle extends MotionlessElement {
      * Instantiates a new obstacle.
      */
     Obstacle(){
-        super(IMAGE, Permeability.BLOCKING);
+        super(IMAGE, SPRITE, Permeability.BLOCKING);
     }
 }

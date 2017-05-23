@@ -177,12 +177,9 @@ public class InsaneVehiclesGames extends Observable implements Runnable{
         final BoardFrame frame = new BoardFrame("All view");
         frame.setDimension(new Dimension(this.getRoad().getWidth(), this.getRoad().getHeight()));
         frame.setDisplayFrame(new Rectangle(0, 0,this.getRoad().getWidth(), this.getRoad().getHeight()));
+        frame.setSize(this.getRoad().getWidth() *15, this.getRoad().getHeight() * 30);
 
         this.frameConfigure(frame);
-
-        /*frameAllView.setDimension(new Dimension(this.roadWidth, this.roadHeight));
-        frameAllView.setDisplayFrame(new Rectangle(0, 0, this.roadWidth, this.roadHeight));
-        this.frameConfigure(frameAllView);*/
     }
 
     public final void frameConfigure(final BoardFrame frame) {
@@ -193,9 +190,10 @@ public class InsaneVehiclesGames extends Observable implements Runnable{
                 System.out.println(e.getImageName());
                 System.out.println(x +" , "+y);
                 frame.addSquare(e, x, y);
+
             }
         }
-
+        frame.addPawn(this.getMyVehicle());
         this.addObserver(frame.getObserver());
 
         frame.setVisible(true);

@@ -21,8 +21,8 @@ abstract class MotionlessElement extends Element {
      * @param permeability
      *            the permeability
      */
-    MotionlessElement(final String imageName, final Permeability permeability) {
-        super(imageName, permeability);
+    MotionlessElement(final String imageName, final char sprite, final Permeability permeability) {
+        super(imageName, sprite, permeability);
     }
 
 }

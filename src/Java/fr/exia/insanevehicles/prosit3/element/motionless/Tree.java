@@ -14,11 +14,11 @@ class Tree extends MotionlessElement {
 
     /** The Constant SPRITE. */
     private static final char SPRITE = '^';
-    private static final String IMAGE = "LightGrayTile.jpg";
+    private static final String IMAGE = "grass.jpg";
     /**
      * Instantiates a new tree.
      */
     Tree() {
-        super(IMAGE, Permeability.BLOCKING);
+        super(IMAGE, SPRITE, Permeability.BLOCKING);
     }
 }

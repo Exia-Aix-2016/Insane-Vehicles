@@ -14,12 +14,12 @@ class Ditch extends MotionlessElement {
 
     /** The Constant SPRITE. */
     private static final char SPRITE = '|';
-    private static final String IMAGE = "LightGrayTile.jpg";
+    private static final String IMAGE = "dirt.jpg";
 
     /**
      * Instantiates a new ditch.
      */
     Ditch(){
-        super(IMAGE, Permeability.BLOCKING);
+        super(IMAGE, SPRITE, Permeability.BLOCKING);
     }
 }

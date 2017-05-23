@@ -32,13 +32,13 @@ abstract class Mobile extends Element implements IPawn {
     /** The road. */
     private Road road;
 
-    Mobile(final String filename, final Road road, final Permeability permeability) throws IOException{
-        super(filename, permeability);
+    Mobile(final String filename, final char sprite, final Road road, final Permeability permeability) throws IOException{
+        super(filename, sprite, permeability);
         this.setRoad(road);
     }
 
-    Mobile(final int x, final int y, final String filename, final Road road, final Permeability permeability) throws IOException {
-        this(filename, road, permeability);
+    Mobile(final int x, final int y, final String filename, final char sprite, final Road road, final Permeability permeability) throws IOException {
+        this(filename, sprite, road, permeability);
         this.setX(x);
         this.setY(y);
     }

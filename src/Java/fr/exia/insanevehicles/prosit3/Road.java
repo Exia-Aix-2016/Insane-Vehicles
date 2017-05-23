@@ -87,6 +87,7 @@ public class Road {
      *             Signals that an I/O exception has occurred.
      */
     private void loadFile(final String fileName) throws IOException {
+
         InputStream in = getClass().getResourceAsStream(fileName);
         final BufferedReader buffer = new BufferedReader(new InputStreamReader(in));
         String line;
@@ -99,6 +100,7 @@ public class Road {
         line = buffer.readLine();
         while (line != null) {
             for (int x = 0; x < line.toCharArray().length; x++) {
+
                 this.setOnTheRoadXY(MotionlessElementsFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
             }
             line = buffer.readLine();
