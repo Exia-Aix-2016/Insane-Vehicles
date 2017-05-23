@@ -3,6 +3,10 @@ package fr.exia.insanevehicles.prosit3.element.mobile;
 import fr.exia.insanevehicles.prosit3.Road;
 import fr.exia.insanevehicles.prosit3.element.Element;
 import fr.exia.insanevehicles.prosit3.element.Permeability;
+import fr.exia.showboard.IPawn;
+
+import java.awt.*;
+import java.io.IOException;
 
 /**
  * <h1>The Class Mobile.</h1>
@@ -10,7 +14,7 @@ import fr.exia.insanevehicles.prosit3.element.Permeability;
  * @author Jade
  * @version 0.1
  */
-abstract class Mobile extends Element {
+abstract class Mobile extends Element implements IPawn {
 
     /**
      * The x.
@@ -28,37 +32,13 @@ abstract class Mobile extends Element {
     /** The road. */
     private Road road;
 
-    /**
-     * Instantiates a new mobile.
-     *
-     * @param sprite
-     *            the sprite
-     * @param road
-     *            the road
-     * @param permeability
-     *            the permeability
-     */
-    Mobile(final char sprite, final Road road, final Permeability permeability) {
-        super(sprite, permeability);
+    Mobile(final String filename, final Road road, final Permeability permeability) throws IOException{
+        super(filename, permeability);
         this.setRoad(road);
     }
 
-    /**
-     * Instantiates a new mobile.
-     *
-     * @param x
-     *            the x
-     * @param y
-     *            the y
-     * @param sprite
-     *            the sprite
-     * @param road
-     *            the road
-     * @param permeability
-     *            the permeability
-     */
-    Mobile(final int x, final int y, final char sprite, final Road road, final Permeability permeability) {
-        this(sprite, road, permeability);
+    Mobile(final int x, final int y, final String filename, final Road road, final Permeability permeability) throws IOException {
+        this(filename, road, permeability);
         this.setX(x);
         this.setY(y);
     }
@@ -178,5 +158,9 @@ abstract class Mobile extends Element {
      */
     public Boolean isCrashed() {
         return this.getRoad().getOnTheRoadXY(this.getX(), this.getY()).getPermeability() == Permeability.BLOCKING;
+    }
+
+    public Point getPosition(){
+        return new Point(this.getX(), this.getY());
     }
 }

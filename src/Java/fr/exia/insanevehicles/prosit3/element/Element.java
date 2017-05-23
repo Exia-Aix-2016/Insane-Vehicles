@@ -1,15 +1,25 @@
 package fr.exia.insanevehicles.prosit3.element;
 
+import fr.exia.showboard.ISquare;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.*;
+import java.net.URL;
+
 /**
  * <h1>The Class Element.</h1>
  *
  * @author Jade
  * @version 0.2
  */
-public abstract class Element {
+public abstract class Element implements ISquare{
 
     /** The sprite. */
     private char         sprite;
+
+    private Image  image;
+    private String imageName;
 
     /** The permeability. */
     private Permeability permeability;
@@ -22,9 +32,12 @@ public abstract class Element {
      * @param permeability
      *            the permeability
      */
-    public Element(final char sprite, final Permeability permeability) {
-        this.setSprite(sprite);
+    public Element(final String imageName, final Permeability permeability) {
+        this.setImageName(imageName);
         this.setPermeability(permeability);
+        try {
+            this.loadImage();
+        } catch (IOException e){}
     }
 
     /**
@@ -65,4 +78,25 @@ public abstract class Element {
         this.permeability = permeability;
     }
 
+    public Image getImage(){
+        return this.image;
+    }
+
+    public void setImage(Image image){
+        this.image = image;
+    }
+
+    public final void loadImage() throws IOException {
+        InputStream in = getClass().getResourceAsStream(this.getImageName());
+        this.setImage(ImageIO.read(in));
+    }
+
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 }

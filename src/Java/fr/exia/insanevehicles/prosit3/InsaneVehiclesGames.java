@@ -1,8 +1,11 @@
 package fr.exia.insanevehicles.prosit3;
 
 import fr.exia.insanevehicles.prosit3.element.mobile.MyVehicle;
+import fr.exia.showboard.BoardFrame;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.Observable;
 
 /**
  * <h1>The Class InsaneVehiclesGames.</h1>
@@ -10,7 +13,7 @@ import java.io.IOException;
  * @author Jade
  * @version 0.2
  */
-public class InsaneVehiclesGames {
+public class InsaneVehiclesGames extends Observable implements Runnable{
     /** The Constant roadWidth. */
     public static final int  roadWidth  = 9;
 
@@ -50,12 +53,14 @@ public class InsaneVehiclesGames {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public InsaneVehiclesGames() throws IOException {
+    public InsaneVehiclesGames() {
         // this.setRoad(new Road(ROAD_WIDTH, ROAD_HEIGHT, ROAD_VIEW,
         // ROAD_QUOTA));
         this.setView(roadView);
-        this.setRoad(new Road("road.txt", roadQuota));
-        this.setMyVehicle(new MyVehicle(startX, startY, this.getRoad()));
+        try {
+            this.setRoad(new Road("road.txt", roadQuota));
+            this.setMyVehicle(new MyVehicle(startX, startY, this.getRoad()));
+        } catch (IOException e){}
     }
 
     /**
@@ -162,5 +167,19 @@ public class InsaneVehiclesGames {
      */
     private void setView(final int view) {
         this.view = view;
+    }
+
+    public void run(){
+        final BoardFrame frameAllView = new BoardFrame("All view");
+        frameAllView.setDimension(new Dimension(this.roadWidth, this.roadHeight));
+        frameAllView.setDisplayFrame(new Rectangle(0, 0, this.roadWidth, this.roadHeight));
+        this.frameConfigure(frameAllView);
+    }
+
+    public final void frameConfigure(final BoardFrame frame) {
+
+        this.addObserver(frame.getObserver());
+
+        frame.setVisible(true);
     }
 }

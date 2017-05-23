@@ -1,5 +1,8 @@
 package fr.exia.insanevehicles.prosit3;
 
+import fr.exia.insanevehicles.prosit3.element.Element;
+import fr.exia.insanevehicles.prosit3.element.motionless.MotionlessElementsFactory;
+
 import java.io.IOException;
 
 /**
