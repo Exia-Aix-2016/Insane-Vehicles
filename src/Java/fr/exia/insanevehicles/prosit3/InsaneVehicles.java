@@ -23,6 +23,6 @@ public abstract class InsaneVehicles {
      */
     public static void main(final String[] args) throws IOException {
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
-        insaneVehiclesGame.play();
+        //insaneVehiclesGame.run();
     }
 }

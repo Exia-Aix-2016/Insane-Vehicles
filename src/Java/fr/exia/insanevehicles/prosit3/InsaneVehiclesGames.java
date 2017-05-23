@@ -1,8 +1,10 @@
 package fr.exia.insanevehicles.prosit3;
 
+import fr.exia.insanevehicles.prosit3.element.Element;
 import fr.exia.insanevehicles.prosit3.element.mobile.MyVehicle;
 import fr.exia.showboard.BoardFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Observable;
@@ -61,6 +63,8 @@ public class InsaneVehiclesGames extends Observable implements Runnable{
             this.setRoad(new Road("road.txt", roadQuota));
             this.setMyVehicle(new MyVehicle(startX, startY, this.getRoad()));
         } catch (IOException e){}
+
+        SwingUtilities.invokeLater(this);
     }
 
     /**
@@ -170,13 +174,27 @@ public class InsaneVehiclesGames extends Observable implements Runnable{
     }
 
     public void run(){
-        final BoardFrame frameAllView = new BoardFrame("All view");
-        frameAllView.setDimension(new Dimension(this.roadWidth, this.roadHeight));
+        final BoardFrame frame = new BoardFrame("All view");
+        frame.setDimension(new Dimension(this.getRoad().getWidth(), this.getRoad().getHeight()));
+        frame.setDisplayFrame(new Rectangle(0, 0,this.getRoad().getWidth(), this.getRoad().getHeight()));
+
+        this.frameConfigure(frame);
+
+        /*frameAllView.setDimension(new Dimension(this.roadWidth, this.roadHeight));
         frameAllView.setDisplayFrame(new Rectangle(0, 0, this.roadWidth, this.roadHeight));
-        this.frameConfigure(frameAllView);
+        this.frameConfigure(frameAllView);*/
     }
 
     public final void frameConfigure(final BoardFrame frame) {
+
+        for (int x = 0; x < this.getRoad().getWidth(); x++) {
+            for (int y = 0; y < this.getRoad().getHeight(); y++) {
+                Element e = this.getRoad().getOnTheRoadXY(x,y);
+                System.out.println(e.getImageName());
+                System.out.println(x +" , "+y);
+                frame.addSquare(e, x, y);
+            }
+        }
 
         this.addObserver(frame.getObserver());
 
