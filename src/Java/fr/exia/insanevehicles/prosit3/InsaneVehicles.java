@@ -21,8 +21,8 @@ public abstract class InsaneVehicles {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException, InterruptedException {
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
-        //insaneVehiclesGame.run();
+        insaneVehiclesGame.move();
     }
 }

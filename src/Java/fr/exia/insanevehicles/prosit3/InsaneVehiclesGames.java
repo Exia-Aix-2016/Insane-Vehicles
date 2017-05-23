@@ -6,6 +6,8 @@ import fr.exia.showboard.BoardFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.Observable;
 
@@ -177,9 +179,64 @@ public class InsaneVehiclesGames extends Observable implements Runnable{
         final BoardFrame frame = new BoardFrame("All view");
         frame.setDimension(new Dimension(this.getRoad().getWidth(), this.getRoad().getHeight()));
         frame.setDisplayFrame(new Rectangle(0, 0,this.getRoad().getWidth(), this.getRoad().getHeight()));
-        frame.setSize(this.getRoad().getWidth() *15, this.getRoad().getHeight() * 30);
+        frame.setSize(this.getRoad().getWidth() *10, this.getRoad().getHeight() * 20);
 
         this.frameConfigure(frame);
+
+        MyVehicle car = this.getMyVehicle();
+        InsaneVehiclesGames self = this;
+
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                if (car.isAlive()){
+                    switch( keyCode ) {
+                        case KeyEvent.VK_LEFT:
+                            car.moveLeft();
+                            self.setChanged();
+                            self.notifyObservers();
+                            break;
+                        case KeyEvent.VK_RIGHT :
+                            car.moveRight();
+                            self.setChanged();
+                            self.notifyObservers();
+                            break;
+                        case KeyEvent.VK_DOWN :
+                            car.moveDown();
+                            self.setChanged();
+                            self.notifyObservers();
+                            break;
+                    }
+                    if (car.isCrashed()){
+                        System.out.println("CRASH !");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+    }
+
+    public final void move() throws InterruptedException {
+        while (true) {
+            if (this.getMyVehicle().isAlive()){
+                this.getMyVehicle().moveDown();
+
+                this.setChanged();
+                this.notifyObservers();
+
+                if (this.getMyVehicle().isCrashed()){
+                    break;
+                }
+
+                Thread.sleep(500);
+            }
+        }
     }
 
     public final void frameConfigure(final BoardFrame frame) {
